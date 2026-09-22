@@ -11,7 +11,7 @@
     "test": "node test-engine.js && node test-server.js"
   },
   "dependencies": {
-    "playwright-core": "^1.63.0",
+
     "ws": "^8.18.0"
   },
   "license": "MIT"
