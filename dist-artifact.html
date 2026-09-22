@@ -1,0 +1,1955 @@
+<title>Cover Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap">
+<style>
+/* COVER STORY — carbon-copy case file.
+   The palette comes from duplicate forms: pale blue carbonless paper, the
+   violet of a spirit-duplicator stamp, and the pink of the third copy.
+   Light is the complete default set; dark redefines the same tokens. */
+
+:root {
+  --paper:       #e3e9f1;
+  --form:        #f7fafd;
+  --form-2:      #eaf0f7;
+  --rule:        #c2cedd;
+  --rule-soft:   #d8e1ec;
+  --ink:         #131c26;
+  --ink-2:       #3f4f61;
+  --ink-3:       #6d7d8f;
+  --stamp:       #4b2fa8;
+  --stamp-ink:   #ffffff;
+  --stamp-soft:  #ebe6fb;
+  --carbon:      #c0415f;
+  --carbon-soft: #fbe6eb;
+  --good:        #196a52;
+  --good-soft:   #dff0e9;
+  --focus:       #4b2fa8;
+  --grain:       .5;
+  --shadow-1:    0 1px 0 rgba(19,28,38,.05);
+  --shadow-2:    0 10px 30px -18px rgba(19,28,38,.65);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:       #0e141b;
+    --form:        #18212b;
+    --form-2:      #131b24;
+    --rule:        #2c3a48;
+    --rule-soft:   #222e3a;
+    --ink:         #e4ecf4;
+    --ink-2:       #a9b9c8;
+    --ink-3:       #7c8d9e;
+    --stamp:       #a38efc;
+    --stamp-ink:   #12101f;
+    --stamp-soft:  #231d3d;
+    --carbon:      #f2809b;
+    --carbon-soft: #331923;
+    --good:        #5fd0ab;
+    --good-soft:   #10291f;
+    --focus:       #a38efc;
+    --grain:       .22;
+    --shadow-1:    0 1px 0 rgba(0,0,0,.4);
+    --shadow-2:    0 12px 34px -18px rgba(0,0,0,.9);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:       #0e141b;
+  --form:        #18212b;
+  --form-2:      #131b24;
+  --rule:        #2c3a48;
+  --rule-soft:   #222e3a;
+  --ink:         #e4ecf4;
+  --ink-2:       #a9b9c8;
+  --ink-3:       #7c8d9e;
+  --stamp:       #a38efc;
+  --stamp-ink:   #12101f;
+  --stamp-soft:  #231d3d;
+  --carbon:      #f2809b;
+  --carbon-soft: #331923;
+  --good:        #5fd0ab;
+  --good-soft:   #10291f;
+  --focus:       #a38efc;
+  --grain:       .22;
+  --shadow-1:    0 1px 0 rgba(0,0,0,.4);
+  --shadow-2:    0 12px 34px -18px rgba(0,0,0,.9);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The paper grain: faint ruled lines, like a carbonless form. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0 27px, var(--rule-soft) 27px 28px);
+  opacity: var(--grain);
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+  padding-inline: 18px;
+  padding-block: 18px 40px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---------- type ---------- */
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 400; }
+
+.display {
+  font-family: "Archivo Black", "Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.muted { color: var(--ink-2); }
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 10px;
+}
+.masthead .title { font-size: clamp(30px, 9vw, 46px); }
+.masthead .sub { display: block; margin-top: 6px; }
+
+/* ---------- surfaces ---------- */
+.sheet {
+  background: var(--form);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-1), var(--shadow-2);
+  padding: 18px;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.row   { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- controls ---------- */
+button, .btn {
+  font: inherit;
+  font-weight: 600;
+  border: 1px solid var(--ink);
+  background: var(--form);
+  color: var(--ink);
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 0;
+  min-height: 48px;
+  transition: transform .08s ease, background .15s ease, color .15s ease;
+}
+button:hover:not(:disabled) { background: var(--form-2); }
+button:active:not(:disabled) { transform: translateY(1px); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+button.primary {
+  background: var(--stamp);
+  border-color: var(--stamp);
+  color: var(--stamp-ink);
+}
+button.primary:hover:not(:disabled) { background: var(--stamp); filter: brightness(1.12); }
+
+button.ghost { border-color: var(--rule); color: var(--ink-2); background: transparent; }
+button.ghost:hover:not(:disabled) { color: var(--ink); border-color: var(--ink); background: transparent; }
+
+button.small { min-height: 38px; padding: 8px 12px; font-size: 14px; }
+button.wide { width: 100%; }
+
+input[type="text"] {
+  font: inherit;
+  padding: 12px 14px;
+  min-height: 48px;
+  width: 100%;
+  background: var(--form-2);
+  border: 1px solid var(--rule);
+  border-bottom: 2px solid var(--ink-3);
+  color: var(--ink);
+  border-radius: 0;
+}
+input[type="text"]::placeholder { color: var(--ink-3); }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; color: var(--ink-2); }
+
+/* ---------- code chip ---------- */
+.code-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--stamp-soft);
+  border: 1px dashed var(--stamp);
+  padding: 14px 16px;
+}
+.code-display .code {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: clamp(30px, 11vw, 44px);
+  font-weight: 700;
+  letter-spacing: .22em;
+  color: var(--stamp);
+  line-height: 1;
+}
+
+/* ---------- brief (your secret) ---------- */
+.brief {
+  border: 2px solid var(--ink);
+  padding: 16px 18px;
+  background: var(--form);
+}
+.brief.is-mole { border-color: var(--carbon); background: var(--carbon-soft); }
+.brief .role { font-size: clamp(22px, 6.5vw, 30px); }
+.brief.is-mole .role { color: var(--carbon); }
+.brief .place {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 600;
+  margin-top: 8px;
+  word-break: break-word;
+}
+.brief .note { margin-top: 8px; font-size: 14px; color: var(--ink-2); }
+
+/* ---------- statement log ---------- */
+.log { display: flex; flex-direction: column; }
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "who score" "words words";
+  align-items: center;
+  gap: 6px 12px;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  background: transparent;
+  position: relative;
+}
+.entry:first-child { border-top: 1px solid var(--rule-soft); }
+
+.entry .who   { grid-area: who; display: flex; align-items: center; gap: 7px; min-width: 0; flex-wrap: wrap; }
+.entry .right { grid-area: score; display: flex; align-items: center; gap: 10px; }
+.entry .words { grid-area: words; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.entry .words:empty { display: none; }
+
+.entry .name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 11ch;
+}
+
+.word {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 15px;
+  padding: 3px 9px;
+  background: var(--form-2);
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.word.blank {
+  color: var(--ink-3);
+  border-style: dashed;
+  background: transparent;
+  letter-spacing: .1em;
+}
+.word.ready { border-color: var(--good); color: var(--good); background: var(--good-soft); }
+
+.tag {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--rule);
+  color: var(--ink-3);
+}
+.tag.you  { border-color: var(--stamp); color: var(--stamp); background: var(--stamp-soft); }
+.tag.host { border-color: var(--ink-3); }
+.tag.bot  { border-color: var(--rule); }
+.tag.off  { border-color: var(--carbon); color: var(--carbon); }
+
+.score {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.4ch;
+  text-align: right;
+}
+
+/* votable rows */
+.entry.votable { cursor: pointer; }
+.entry.votable:hover { background: var(--form-2); }
+.entry.votable:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.entry.picked { background: var(--stamp-soft); box-shadow: inset 3px 0 0 var(--stamp); }
+.entry.self-row { opacity: .55; }
+
+/* the stamp — one deliberate flourish, used only at the reveal */
+.stamp-mark {
+  display: inline-block;
+  font-family: "Archivo Black", "Archivo", sans-serif;
+  font-size: 12px;
+  letter-spacing: .16em;
+  color: var(--carbon);
+  border: 3px double var(--carbon);
+  padding: 1px 8px;
+  transform: rotate(-6deg);
+  transform-origin: center;
+  margin-left: 2px;
+  animation: stamp .32s cubic-bezier(.2,1.5,.4,1) both;
+}
+@keyframes stamp {
+  from { transform: rotate(-6deg) scale(2.4); opacity: 0; }
+  to   { transform: rotate(-6deg) scale(1);   opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stamp-mark { animation: none; }
+  * { transition: none !important; }
+}
+
+/* ---------- status bar ---------- */
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+  flex-wrap: wrap;
+}
+.clock {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+}
+.clock.low { color: var(--carbon); }
+
+.meter { height: 3px; background: var(--rule-soft); width: 100%; }
+.meter > i { display: block; height: 100%; background: var(--stamp); transition: width .9s linear; }
+
+/* ---------- options grid ---------- */
+.settings { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 380px) { .settings { grid-template-columns: 1fr; } }
+.setting {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  border: 1px solid var(--rule); padding: 8px 10px; background: var(--form-2);
+}
+.setting .stepper { display: flex; align-items: center; gap: 4px; }
+.setting .stepper span { min-width: 2ch; text-align: center; font-weight: 700; }
+.setting button { min-height: 34px; padding: 4px 10px; line-height: 1; }
+
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 430px) { .options { grid-template-columns: 1fr; } }
+.options button { text-align: left; font-weight: 500; }
+
+/* ---------- result ---------- */
+.verdict {
+  border-left: 4px solid var(--stamp);
+  padding: 12px 0 12px 14px;
+}
+.verdict.caught { border-left-color: var(--good); }
+.verdict.escaped { border-left-color: var(--carbon); }
+.verdict h3 { font-size: clamp(20px, 5.6vw, 26px); }
+.verdict p { margin: 8px 0 0; color: var(--ink-2); }
+
+.delta { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 13px; color: var(--good); }
+.delta.zero { color: var(--ink-3); }
+
+/* ---------- rules ---------- */
+dialog.rules {
+  border: 2px solid var(--ink);
+  background: var(--form);
+  color: var(--ink);
+  max-width: 560px;
+  width: calc(100% - 32px);
+  padding: 0;
+  box-shadow: var(--shadow-2);
+}
+dialog.rules::backdrop { background: rgba(10, 16, 22, .6); }
+dialog.rules .body { padding: 20px; }
+dialog.rules h2 { font-size: 26px; margin-bottom: 4px; }
+dialog.rules ol { margin: 0; padding-left: 20px; }
+dialog.rules li { margin-bottom: 10px; }
+dialog.rules .scoring {
+  margin-top: 14px;
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  display: grid;
+  gap: 6px;
+}
+dialog.rules .scoring div {
+  display: flex; justify-content: space-between; gap: 12px;
+  font-size: 14px;
+}
+dialog.rules .scoring b { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; color: var(--stamp); }
+
+/* ---------- misc ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 11px 16px;
+  font-size: 14px;
+  max-width: calc(100% - 36px);
+  z-index: 50;
+  box-shadow: var(--shadow-2);
+}
+
+.hint { font-size: 13px; color: var(--ink-3); }
+.err  { color: var(--carbon); font-size: 14px; min-height: 20px; }
+
+.banner {
+  background: var(--stamp-soft);
+  border: 1px solid var(--stamp);
+  color: var(--ink);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.banner.warn { background: var(--carbon-soft); border-color: var(--carbon); }
+
+footer.foot {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>window.DECK = {
+  "version": 1,
+  "categories": {
+    "Travel": ["ticket", "queue", "luggage", "map", "delay", "stranger", "window", "seat"],
+    "Everyday": ["door", "line", "receipt", "counter", "chair", "sign", "clock", "shelf"],
+    "Work": ["meeting", "badge", "deadline", "coffee", "screen", "email", "chair", "manager"],
+    "Wild": ["silence", "weather", "dirt", "boots", "distance", "cold", "sky", "insects"],
+    "Nightlife": ["loud", "lights", "crowd", "queue", "late", "drinks", "bass", "stamp"],
+    "Odd Places": ["strange", "quiet", "smell", "locked", "dust", "corridor", "rules", "sign"]
+  },
+  "locations": [
+    { "id": "airport",      "name": "Airport terminal",      "cat": "Travel",     "assoc": ["boarding","gate","passport","suitcase","security","announcement","runway","duty-free","layover","tarmac","carousel","liquids"] },
+    { "id": "cruise",       "name": "Cruise ship",           "cat": "Travel",     "assoc": ["deck","buffet","cabin","seasick","port","lifeboat","ocean","captain","horn","pool","muster","waves"] },
+    { "id": "sleepertrain", "name": "Overnight train",       "cat": "Travel",     "assoc": ["bunk","rattle","corridor","conductor","tunnel","blanket","pantry","sleeper","tracks","dawn","berth","tea"] },
+    { "id": "hostel",       "name": "Backpacker hostel",     "cat": "Travel",     "assoc": ["bunk","lockers","shared","cheap","kitchen","earplugs","backpack","common","towel","checkout","stamps","noise"] },
+    { "id": "roadmotel",    "name": "Highway motel",         "cat": "Travel",     "assoc": ["neon","vacancy","keycard","ice","parking","truck","vending","curtains","checkout","flicker","bible","carpet"] },
+    { "id": "borderpost",   "name": "Border crossing",       "cat": "Travel",     "assoc": ["passport","stamp","questions","uniform","barrier","queue","declare","booth","visa","inspection","flag","waiting"] },
+    { "id": "gondola",      "name": "Mountain cable car",    "cat": "Travel",     "assoc": ["cable","swaying","altitude","window","skis","fog","pylon","descent","dangling","cabin","lever","view"] },
+    { "id": "ferry",        "name": "Morning ferry",         "cat": "Travel",     "assoc": ["ramp","gulls","commuters","spray","railing","schedule","bicycle","horn","dock","churn","bench","crossing"] },
+
+    { "id": "laundromat",   "name": "Laundromat",            "cat": "Everyday",   "assoc": ["coins","dryer","spin","detergent","folding","waiting","lint","machines","warm","socks","hum","basket"] },
+    { "id": "supermarket",  "name": "Supermarket",           "cat": "Everyday",   "assoc": ["trolley","aisle","checkout","freezer","barcode","basket","offers","bagging","produce","queue","scanner","trolleys"] },
+    { "id": "dentist",      "name": "Dentist waiting room",  "cat": "Everyday",   "assoc": ["magazines","drill","appointment","chair","fluoride","nervous","reception","gloves","rinse","xray","poster","fish-tank"] },
+    { "id": "dmv",          "name": "Licence office",        "cat": "Everyday",   "assoc": ["number","forms","photo","window","waiting","clipboard","renewal","stamp","paperwork","bureaucracy","queue","booth"] },
+    { "id": "barbershop",   "name": "Barbershop",            "cat": "Everyday",   "assoc": ["clippers","mirror","cape","trim","chair","gossip","sweeping","fade","razor","tip","comb","buzz"] },
+    { "id": "gym",          "name": "Gym at 6am",            "cat": "Everyday",   "assoc": ["weights","treadmill","mirror","sweat","locker","reps","towel","protein","machines","music","bench","chalk"] },
+    { "id": "library",      "name": "Public library",        "cat": "Everyday",   "assoc": ["silence","shelves","stamp","overdue","study","catalogue","whisper","aisles","returns","desk","dust","card"] },
+    { "id": "carwash",      "name": "Automatic car wash",    "cat": "Everyday",   "assoc": ["brushes","foam","conveyor","windows","rinse","token","wax","dark","water","blower","tunnel","strips"] },
+
+    { "id": "openplan",     "name": "Open-plan office",      "cat": "Work",       "assoc": ["standup","monitor","headphones","printer","kitchenette","calendar","desk","slack","ticket","reorg","whiteboard","mug"] },
+    { "id": "datacenter",   "name": "Data centre",           "cat": "Work",       "assoc": ["racks","cold","fans","cabling","badge","noise","blinking","raised-floor","humming","aisle","ups","servers"] },
+    { "id": "kitchen",      "name": "Restaurant kitchen",    "cat": "Work",       "assoc": ["tickets","burners","shouting","pans","plating","heat","chef","prep","knives","service","steam","expo"] },
+    { "id": "warehouse",    "name": "Fulfilment warehouse",  "cat": "Work",       "assoc": ["pallets","forklift","scanner","shelves","conveyor","picking","boxes","tape","aisle","shift","label","dolly"] },
+    { "id": "newsroom",     "name": "Newsroom on deadline",  "cat": "Work",       "assoc": ["deadline","desk","editor","copy","headline","phones","screens","breaking","byline","rewrite","clock","source"] },
+    { "id": "callcenter",   "name": "Call centre",           "cat": "Work",       "assoc": ["headset","script","queue","hold","metrics","cubicle","transfer","supervisor","mute","targets","survey","calls"] },
+    { "id": "buildsite",    "name": "Construction site",     "cat": "Work",       "assoc": ["helmet","scaffold","cement","crane","boots","dust","rebar","hoarding","lunch","drill","permit","mud"] },
+    { "id": "opentheatre",  "name": "Operating theatre",     "cat": "Work",       "assoc": ["gloves","scrub","lamp","monitor","mask","sterile","instruments","team","clamp","beeping","gown","count"] },
+
+    { "id": "desert",       "name": "Desert at noon",        "cat": "Wild",       "assoc": ["heat","dune","shade","water","mirage","sand","scorpion","glare","thirst","horizon","dry","wind"] },
+    { "id": "rainforest",   "name": "Rainforest floor",      "cat": "Wild",       "assoc": ["canopy","humid","leeches","vines","calls","mud","leaves","damp","insects","green","roots","rain"] },
+    { "id": "glacier",      "name": "Glacier",               "cat": "Wild",       "assoc": ["crevasse","rope","ice","blue","crampons","creaking","meltwater","white","cold","sled","wind","snow"] },
+    { "id": "swamp",        "name": "Swamp at dusk",         "cat": "Wild",       "assoc": ["mosquitoes","reeds","boat","mud","croaking","murky","mist","cypress","paddle","gators","damp","dark"] },
+    { "id": "savannah",     "name": "Savannah waterhole",    "cat": "Wild",       "assoc": ["dust","herd","grass","hooves","watching","lion","horizon","dry","tracks","acacia","heat","drink"] },
+    { "id": "caves",        "name": "Cave system",           "cat": "Wild",       "assoc": ["torch","echo","drip","squeeze","bats","dark","rope","stalactite","damp","crawl","narrow","helmet"] },
+    { "id": "cliffs",       "name": "Sea cliffs",            "cat": "Wild",       "assoc": ["gulls","edge","wind","spray","nests","drop","path","rocks","crashing","fence","gusts","height"] },
+    { "id": "tundra",       "name": "Arctic research camp",  "cat": "Wild",       "assoc": ["generator","parka","supplies","radio","dark","isolation","stove","snow","instruments","cabin","freeze","aurora"] },
+
+    { "id": "nightclub",    "name": "Basement nightclub",    "cat": "Nightlife",  "assoc": ["bass","strobe","sweat","cloakroom","bouncer","dancefloor","stamp","queue","smoke","dj","dark","shots"] },
+    { "id": "karaoke",      "name": "Karaoke booth",         "cat": "Nightlife",  "assoc": ["mic","screen","tambourine","offkey","remote","booth","duet","applause","playlist","reverb","cheers","booklet"] },
+    { "id": "divebar",      "name": "Dive bar",              "cat": "Nightlife",  "assoc": ["jukebox","stools","regulars","tab","peanuts","sticky","pool","neon","bartender","cheap","tv","last-call"] },
+    { "id": "casino",       "name": "Casino floor",          "cat": "Nightlife",  "assoc": ["chips","dealer","roulette","carpet","comped","cameras","slots","noclocks","bets","table","tokens","cash"] },
+    { "id": "rooftop",      "name": "Rooftop party",         "cat": "Nightlife",  "assoc": ["skyline","heaters","string-lights","wind","cocktail","list","view","dj","edge","lift","crowd","cold"] },
+    { "id": "gigvenue",     "name": "Small gig venue",       "cat": "Nightlife",  "assoc": ["support-act","merch","earplugs","pit","amps","setlist","stamp","sweat","encore","stage","monitor","crowd"] },
+    { "id": "latediner",    "name": "24-hour diner",         "cat": "Nightlife",  "assoc": ["booth","pancakes","refill","neon","waitress","3am","menu","ketchup","counter","fluorescent","syrup","quiet"] },
+    { "id": "afterparty",   "name": "Someone's afterparty",  "cat": "Nightlife",  "assoc": ["kitchen","speaker","neighbours","dawn","couch","aux","leftovers","shoes","hallway","phone","charger","taxi"] },
+
+    { "id": "escaperoom",   "name": "Escape room",           "cat": "Odd Places", "assoc": ["clue","padlock","timer","hint","props","combination","clock","hidden","door","panic","riddle","team"] },
+    { "id": "waxmuseum",    "name": "Wax museum",            "cat": "Odd Places", "assoc": ["figures","staring","velvet","uncanny","photos","ropes","still","lighting","celebrity","dust","pose","quiet"] },
+    { "id": "bunker",       "name": "Cold-war bunker",       "cat": "Odd Places", "assoc": ["blast-door","rations","concrete","maps","dial","ventilation","sealed","hatch","ladder","damp","radio","sign"] },
+    { "id": "aquarium",     "name": "Aquarium tunnel",       "cat": "Odd Places", "assoc": ["glass","blue","shark","dark","bubbles","tank","walkway","ripple","feeding","reflection","kids","glow"] },
+    { "id": "selfstorage",  "name": "Self-storage unit",     "cat": "Odd Places", "assoc": ["rollershutter","padlock","corridor","boxes","sensor-light","rental","concrete","dust","trolley","code","unit","echo"] },
+    { "id": "greenhouse",   "name": "Botanical greenhouse",  "cat": "Odd Places", "assoc": ["humid","glass","misters","labels","paths","orchid","warm","condensation","tropical","bench","fern","drip"] },
+    { "id": "filmset",      "name": "Film set",              "cat": "Odd Places", "assoc": ["action","boom","marks","trailer","extras","lighting","take","clapper","catering","crew","reset","quiet"] },
+    { "id": "lostfound",    "name": "Lost property office",  "cat": "Odd Places", "assoc": ["shelves","tags","umbrellas","claim","forms","boxes","odd","counter","labels","keys","dusty","register"] }
+  ]
+}
+;</script>
+<script>/* COVER STORY — pure game engine. No I/O, no DOM, no network.
+   Used by the Node server and (inlined) by the browser build. */
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.CoverStory = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  var MIN_PLAYERS = 3;
+  var MAX_PLAYERS = 8;
+  var CLUE_MAX = 16;
+  var GUESS_OPTIONS = 6;
+  var CAUTION = 0.4;      /* how often a bot insider plays a safe, bland clue */
+  var SUSPICION_NOISE = 5; /* how unreliable a bot's read of the table is */
+
+  /* ---------- deterministic RNG (seedable, so games are reproducible in tests) ---------- */
+  function makeRng(seed) {
+    var s = (seed >>> 0) || 0x2f6e2b1;
+    return function () {
+      s ^= s << 13; s >>>= 0;
+      s ^= s >>> 17;
+      s ^= s << 5; s >>>= 0;
+      return s / 4294967296;
+    };
+  }
+  function pick(rng, arr) { return arr[Math.floor(rng() * arr.length)]; }
+  function shuffle(rng, arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(rng() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  /* ---------- text helpers ---------- */
+  function norm(s) { return String(s || '').trim().toLowerCase(); }
+  function nameWords(locName) {
+    return norm(locName).split(/[^a-z0-9]+/).filter(function (w) { return w.length > 2; });
+  }
+
+  var CLUE_RE = /^[\p{L}\p{N}][\p{L}\p{N}'’-]*$/u;
+
+  /* Validate a clue against the rules the UI states. */
+  function checkClue(word, loc, usedWords) {
+    var w = String(word == null ? '' : word).trim();
+    if (!w) return { ok: false, error: 'Type one word.' };
+    if (/\s/.test(w)) return { ok: false, error: 'One word only — no spaces.' };
+    if (w.length > CLUE_MAX) return { ok: false, error: 'Max ' + CLUE_MAX + ' characters.' };
+    if (!CLUE_RE.test(w)) return { ok: false, error: 'Letters, numbers and hyphens only.' };
+    var n = norm(w);
+    if (loc) {
+      if (n === norm(loc.name)) return { ok: false, error: "You can't say the location." };
+      if (nameWords(loc.name).indexOf(n) !== -1) return { ok: false, error: "That word is in the location's name." };
+    }
+    if (usedWords && usedWords.some(function (u) { return norm(u) === n; })) {
+      return { ok: false, error: 'Someone already said that. Pick another word.' };
+    }
+    return { ok: true, word: w };
+  }
+
+  /* ---------- game construction ---------- */
+  function createGame(code, hostId, deck, opts) {
+    opts = opts || {};
+    return {
+      code: code,
+      deck: deck,
+      phase: 'lobby',
+      round: 0,
+      totalRounds: opts.totalRounds || 5,
+      hostId: hostId,
+      players: [],
+      seed: opts.seed || (Date.now() & 0x7fffffff),
+      usedLocations: [],
+      secret: null,
+      clues: {},
+      votes: {},
+      moleGuess: null,
+      result: null,
+      deadline: 0,
+      createdAt: Date.now()
+    };
+  }
+
+  function findPlayer(g, id) {
+    for (var i = 0; i < g.players.length; i++) if (g.players[i].id === id) return g.players[i];
+    return null;
+  }
+  function activePlayers(g) { return g.players.filter(function (p) { return !p.left; }); }
+
+  function addPlayer(g, id, name, isBot) {
+    if (findPlayer(g, id)) { var ex = findPlayer(g, id); ex.left = false; return { ok: true, player: ex }; }
+    if (activePlayers(g).length >= MAX_PLAYERS) return { ok: false, error: 'Room is full (8 players).' };
+    if (g.phase !== 'lobby') return { ok: false, error: 'That game is already in progress.' };
+    var p = { id: id, name: String(name || 'Player').slice(0, 18), isBot: !!isBot, score: 0, left: false };
+    g.players.push(p);
+    return { ok: true, player: p };
+  }
+
+  function removePlayer(g, id) {
+    var p = findPlayer(g, id);
+    if (!p) return;
+    if (g.phase === 'lobby') g.players = g.players.filter(function (q) { return q.id !== id; });
+    else p.left = true;
+  }
+
+  function locById(g, id) {
+    for (var i = 0; i < g.deck.locations.length; i++) if (g.deck.locations[i].id === id) return g.deck.locations[i];
+    return null;
+  }
+
+  /* ---------- round lifecycle ---------- */
+  function startRound(g) {
+    var live = activePlayers(g);
+    if (live.length < MIN_PLAYERS) return { ok: false, error: 'Need at least ' + MIN_PLAYERS + ' players.' };
+
+    var rng = makeRng(g.seed + g.round * 7919 + 13);
+    g.round += 1;
+
+    var pool = g.deck.locations.filter(function (l) { return g.usedLocations.indexOf(l.id) === -1; });
+    if (!pool.length) { g.usedLocations = []; pool = g.deck.locations.slice(); }
+    var loc = pick(rng, pool);
+    g.usedLocations.push(loc.id);
+
+    /* The mole rotates: prefer players who have been mole least often. */
+    var counts = {};
+    live.forEach(function (p) { counts[p.id] = p.moleCount || 0; });
+    var min = Math.min.apply(null, live.map(function (p) { return counts[p.id]; }));
+    var eligible = live.filter(function (p) { return counts[p.id] === min; });
+    var mole = pick(rng, eligible);
+    mole.moleCount = (mole.moleCount || 0) + 1;
+
+    var sameCat = g.deck.locations.filter(function (l) { return l.cat === loc.cat && l.id !== loc.id; });
+    var decoys = shuffle(rng, sameCat).slice(0, GUESS_OPTIONS - 1).map(function (l) { return l.id; });
+    var options = shuffle(rng, [loc.id].concat(decoys));
+
+    g.secret = { locationId: loc.id, cat: loc.cat, moleId: mole.id, options: options };
+    g.clues = {};
+    g.votes = {};
+    g.moleGuess = null;
+    g.result = null;
+    g.phase = 'clue1';
+    return { ok: true };
+  }
+
+  function clueIndex(g) { return g.phase === 'clue1' ? 0 : g.phase === 'clue2' ? 1 : -1; }
+
+  function usedWordsThisRound(g) {
+    var out = [];
+    Object.keys(g.clues).forEach(function (pid) {
+      (g.clues[pid] || []).forEach(function (w) { if (w) out.push(w); });
+    });
+    return out;
+  }
+
+  function submitClue(g, pid, word) {
+    var idx = clueIndex(g);
+    if (idx < 0) return { ok: false, error: 'Not the clue phase.' };
+    var p = findPlayer(g, pid);
+    if (!p || p.left) return { ok: false, error: 'You are not in this game.' };
+    if (g.clues[pid] && g.clues[pid][idx]) return { ok: false, error: 'You already gave a clue this round.' };
+
+    /* The mole never sees the location, so their word is only checked for shape + duplicates. */
+    var loc = pid === g.secret.moleId ? null : locById(g, g.secret.locationId);
+    var v = checkClue(word, loc, usedWordsThisRound(g));
+    if (!v.ok) return v;
+
+    if (!g.clues[pid]) g.clues[pid] = [];
+    g.clues[pid][idx] = v.word;
+    return { ok: true };
+  }
+
+  function allCluesIn(g) {
+    var idx = clueIndex(g);
+    if (idx < 0) return false;
+    return activePlayers(g).every(function (p) { return g.clues[p.id] && g.clues[p.id][idx]; });
+  }
+
+  function submitVote(g, pid, targetId) {
+    if (g.phase !== 'vote') return { ok: false, error: 'Not the voting phase.' };
+    var p = findPlayer(g, pid);
+    if (!p || p.left) return { ok: false, error: 'You are not in this game.' };
+    if (targetId === pid) return { ok: false, error: "You can't vote for yourself." };
+    var t = findPlayer(g, targetId);
+    if (!t || t.left) return { ok: false, error: 'Pick a player still in the game.' };
+    g.votes[pid] = targetId;
+    return { ok: true };
+  }
+
+  function allVotesIn(g) {
+    return activePlayers(g).every(function (p) { return g.votes[p.id]; });
+  }
+
+  function tally(g) {
+    var counts = {};
+    activePlayers(g).forEach(function (p) { counts[p.id] = 0; });
+    Object.keys(g.votes).forEach(function (voter) {
+      var t = g.votes[voter];
+      if (counts[t] === undefined) counts[t] = 0;
+      counts[t] += 1;
+    });
+    var max = 0;
+    Object.keys(counts).forEach(function (id) { if (counts[id] > max) max = counts[id]; });
+    var top = Object.keys(counts).filter(function (id) { return counts[id] === max && max > 0; });
+    /* Caught only on a clear, untied plurality. A tie lets the mole walk. */
+    var caught = top.length === 1 && top[0] === g.secret.moleId;
+    return { counts: counts, top: top, max: max, caught: caught };
+  }
+
+  function submitMoleGuess(g, locationId) {
+    if (g.phase !== 'lastword') return { ok: false, error: 'Not the last-word phase.' };
+    if (g.secret.options.indexOf(locationId) === -1) return { ok: false, error: 'Not one of the options.' };
+    g.moleGuess = locationId;
+    return { ok: true };
+  }
+
+  /* Scoring. Pure with respect to inputs; mutates player scores once. */
+  function scoreRound(g) {
+    var t = tally(g);
+    var mole = findPlayer(g, g.secret.moleId);
+    var loc = locById(g, g.secret.locationId);
+    var deltas = {};
+    activePlayers(g).forEach(function (p) { deltas[p.id] = 0; });
+    if (deltas[mole.id] === undefined) deltas[mole.id] = 0;
+
+    /* +1 to anyone who fingered the mole, win or lose. */
+    Object.keys(g.votes).forEach(function (voter) {
+      if (g.votes[voter] === g.secret.moleId && voter !== g.secret.moleId) {
+        deltas[voter] = (deltas[voter] || 0) + 1;
+      }
+    });
+
+    var guessRight = false;
+    if (t.caught) {
+      activePlayers(g).forEach(function (p) {
+        if (p.id !== g.secret.moleId) deltas[p.id] += 2;
+      });
+      guessRight = g.moleGuess === g.secret.locationId;
+      if (guessRight) deltas[mole.id] += 3;
+    } else {
+      deltas[mole.id] += 4;
+    }
+
+    Object.keys(deltas).forEach(function (id) {
+      var p = findPlayer(g, id);
+      if (p) p.score += deltas[id];
+    });
+
+    g.result = {
+      round: g.round,
+      caught: t.caught,
+      counts: t.counts,
+      top: t.top,
+      moleId: g.secret.moleId,
+      moleName: mole ? mole.name : '?',
+      locationId: g.secret.locationId,
+      locationName: loc ? loc.name : '?',
+      moleGuess: g.moleGuess,
+      moleGuessName: g.moleGuess ? (locById(g, g.moleGuess) || {}).name : null,
+      guessRight: guessRight,
+      deltas: deltas,
+      votes: Object.assign({}, g.votes)
+    };
+    return g.result;
+  }
+
+  /* Phase machine. Call when a submission completes or a timer fires. */
+  function advance(g) {
+    if (g.phase === 'clue1') { g.phase = 'clue2'; return g.phase; }
+    if (g.phase === 'clue2') { g.phase = 'vote'; return g.phase; }
+    if (g.phase === 'vote') {
+      var t = tally(g);
+      if (t.caught) { g.phase = 'lastword'; return g.phase; }
+      scoreRound(g);
+      g.phase = 'reveal';
+      return g.phase;
+    }
+    if (g.phase === 'lastword') {
+      scoreRound(g);
+      g.phase = 'reveal';
+      return g.phase;
+    }
+    if (g.phase === 'reveal') {
+      if (g.round >= g.totalRounds) { g.phase = 'gameover'; return g.phase; }
+      startRound(g);
+      return g.phase;
+    }
+    return g.phase;
+  }
+
+  function standings(g) {
+    return g.players.slice().sort(function (a, b) {
+      return b.score - a.score || a.name.localeCompare(b.name);
+    });
+  }
+
+  /* ---------- bots ---------- */
+  /* Insider bots draw on the location's association list; the mole bot
+     falls back to bland category words, exactly like a bluffing human. */
+  function botClue(g, pid) {
+    var idx = clueIndex(g);
+    var seat = 0;
+    for (var k = 0; k < g.players.length; k++) if (g.players[k].id === pid) seat = k;
+    var rng = makeRng(g.seed + g.round * 31 + seat * 7717 + (idx + 1) * 101 + 5);
+    var used = usedWordsThisRound(g);
+    var loc = locById(g, g.secret.locationId);
+    var isMole = pid === g.secret.moleId;
+    var generics = (g.deck.categories[g.secret.cat] || []).slice();
+    var neighbours = g.deck.locations
+      .filter(function (l) { return l.cat === g.secret.cat && l.id !== g.secret.locationId; })
+      .reduce(function (acc, l) { return acc.concat(l.assoc); }, []);
+
+    /* Insiders lead with the location's own vocabulary and thin out into
+       bland category words. The mole has only the category, so it works the
+       other way round — which is exactly what makes a mole findable. */
+    /* Real insiders hedge: saying the most obvious word is how you get
+       read, and how you hand the mole a free ride. So a bot insider plays
+       it safe a fair share of the time. */
+    var seatSkill = ((seat * 2654435761) % 1000) / 1000;  /* stable per seat */
+    var cautious = rng() < (CAUTION - 0.15 + seatSkill * 0.3);
+    var tiers = isMole
+      ? [shuffle(rng, neighbours), shuffle(rng, generics)]
+      : cautious
+        ? [shuffle(rng, generics), shuffle(rng, neighbours), shuffle(rng, loc.assoc)]
+        : [shuffle(rng, loc.assoc), shuffle(rng, generics)];
+
+    for (var t = 0; t < tiers.length; t++) {
+      for (var i = 0; i < tiers[t].length; i++) {
+        if (checkClue(tiers[t][i], isMole ? null : loc, used).ok) return tiers[t][i];
+      }
+    }
+    /* Guaranteed distinct per seat, round and phase — a bot never stalls a game. */
+    return 'clue' + seat + '-' + g.round + (idx + 1);
+  }
+
+  /* A bot insider suspects whoever's clues sit furthest from the location.
+     A bot mole votes for a plausible innocent — never itself. */
+  function botVote(g, pid) {
+    var seat = 0;
+    for (var k = 0; k < g.players.length; k++) if (g.players[k].id === pid) seat = k;
+    var rng = makeRng(g.seed + g.round * 577 + seat * 9173 + 29);
+    var others = activePlayers(g).filter(function (p) { return p.id !== pid; });
+    if (!others.length) return null;
+
+    if (pid === g.secret.moleId) {
+      /* The mole deflects onto whoever looks quietest, never onto itself. */
+      var innocents = others.filter(function (p) { return p.id !== g.secret.moleId; });
+      return pick(rng, innocents.length ? innocents : others).id;
+    }
+
+    var loc = locById(g, g.secret.locationId);
+    var assoc = loc.assoc.map(norm);
+    var generics = (g.deck.categories[g.secret.cat] || []).map(norm);
+
+    var scored = others.map(function (p) {
+      var words = (g.clues[p.id] || []).filter(Boolean).map(norm);
+      var s = 0;
+      words.forEach(function (w) {
+        if (assoc.indexOf(w) !== -1) s += 3;            /* unmistakably inside */
+        else if (generics.indexOf(w) !== -1) s += 1.2;  /* safe, could be either */
+        else s += 1.6;                                   /* off-list but specific */
+      });
+      /* Bots are not oracles: a wide jitter keeps them beatable and keeps
+         innocent players in real danger, which is the point of the game. */
+      return { id: p.id, s: s + rng() * SUSPICION_NOISE };
+    });
+    scored.sort(function (a, b) { return a.s - b.s; });
+    return scored[0].id;
+  }
+
+  return {
+    MIN_PLAYERS: MIN_PLAYERS, MAX_PLAYERS: MAX_PLAYERS, CLUE_MAX: CLUE_MAX,
+    _tune: function (c, n) { CAUTION = c; SUSPICION_NOISE = n; },
+    makeRng: makeRng, shuffle: shuffle, pick: pick, norm: norm,
+    checkClue: checkClue, createGame: createGame, addPlayer: addPlayer, removePlayer: removePlayer,
+    findPlayer: findPlayer, activePlayers: activePlayers, locById: locById,
+    startRound: startRound, submitClue: submitClue, allCluesIn: allCluesIn, clueIndex: clueIndex,
+    submitVote: submitVote, allVotesIn: allVotesIn, tally: tally, submitMoleGuess: submitMoleGuess,
+    scoreRound: scoreRound, advance: advance, standings: standings,
+    botClue: botClue, botVote: botVote, usedWordsThisRound: usedWordsThisRound
+  };
+});
+</script>
+<script>/* What one player is allowed to see.
+   Shared by the hosted server and the quick-play build so the two versions
+   can never drift apart on the one thing that matters: who knows what. */
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./engine.js'));
+  else root.CoverView = factory(root.CoverStory);
+})(typeof self !== 'undefined' ? self : this, function (E) {
+  'use strict';
+
+  function buildView(g, pid, opts) {
+    opts = opts || {};
+    var online = opts.online || function () { return true; };
+    var me = E.findPlayer(g, pid);
+    var isMole = !!(g.secret && g.secret.moleId === pid);
+    var loc = g.secret ? E.locById(g, g.secret.locationId) : null;
+    var revealed = g.phase === 'reveal' || g.phase === 'gameover';
+    var idx = E.clueIndex(g);
+
+    /* First words go on the table once round one closes; second words at the vote. */
+    var show = [g.phase !== 'clue1', g.phase === 'vote' || g.phase === 'lastword' || revealed];
+
+    var players = g.players.map(function (p) {
+      return {
+        id: p.id, name: p.name, isBot: p.isBot, score: p.score, left: !!p.left,
+        online: p.isBot || online(p.id),
+        submitted: !!(idx >= 0 && g.clues[p.id] && g.clues[p.id][idx]),
+        voted: !!g.votes[p.id],
+        clues: [
+          show[0] ? (g.clues[p.id] || [])[0] || null : null,
+          show[1] ? (g.clues[p.id] || [])[1] || null : null
+        ]
+      };
+    });
+
+    return {
+      t: 'state',
+      code: g.code,
+      phase: g.phase,
+      round: g.round,
+      totalRounds: g.totalRounds,
+      hostId: g.hostId,
+      youAreHost: g.hostId === pid,
+      deadline: opts.deadline || 0,
+      serverNow: Date.now(),
+      you: me ? { id: me.id, name: me.name, score: me.score, isMole: isMole } : null,
+      players: players,
+      category: g.secret ? g.secret.cat : null,
+      location: g.secret ? ((isMole && !revealed) ? null : (loc ? loc.name : null)) : null,
+      myClue: (g.clues[pid] || [])[idx] || null,
+      myVote: g.votes[pid] || null,
+      options: (g.phase === 'lastword' && isMole)
+        ? g.secret.options.map(function (id) { return { id: id, name: E.locById(g, id).name }; })
+        : null,
+      moleGuess: g.moleGuess,
+      result: revealed ? g.result : null,
+      standings: revealed ? E.standings(g).map(function (p) {
+        return { id: p.id, name: p.name, score: p.score };
+      }) : null,
+      minPlayers: E.MIN_PLAYERS, maxPlayers: E.MAX_PLAYERS, clueMax: E.CLUE_MAX
+    };
+  }
+
+  return { buildView: buildView };
+});
+</script>
+<script>/* Quick-play transport for the published page.
+   There is no server here, so one player's browser acts as the table: it holds
+   the authoritative game, reads everyone's moves from the shared store and
+   writes the result back. If that player closes the tab, the next one at the
+   table picks the game up where it stopped. */
+window.Net = (function () {
+  'use strict';
+
+  var E = window.CoverStory, V = window.CoverView;
+  var handlers = [];
+  var db = null, room = null, user = null;
+  var myId = null, myName = 'Player';
+  var code = null, gameRef = null, actionsRef = null;
+  var game = null;
+  var unsubGame = null, unsubActions = null;
+  var isHost = false;
+  var actionN = 0, seenN = {};
+  var peers = {};                 // pid -> last seen (ms), from the presence channel
+  var loop = null, dirty = false, lastWrite = 0, writing = false;
+  var booted = false;
+
+  var HOST_GRACE = 9000;          // how long a silent host keeps the table
+  var KEEPALIVE = 12000;          // heartbeat while a round is running
+
+  function emit(m) { handlers.forEach(function (h) { h(m); }); }
+  function fail(msg) { emit({ t: 'error', message: msg }); }
+  function now() { return Date.now(); }
+
+  /* ---------- identity ---------- */
+  function localId() {
+    var k = 'cs_local_id', v = null;
+    try { v = localStorage.getItem(k); } catch (_) {}
+    if (!v) {
+      v = 'p' + Math.random().toString(36).slice(2, 10);
+      try { localStorage.setItem(k, v); } catch (_) {}
+    }
+    return v;
+  }
+
+  /* ---------- (de)serialising the table ---------- */
+  function pack(g) {
+    return {
+      code: g.code, phase: g.phase, round: g.round, totalRounds: g.totalRounds,
+      hostId: g.hostId, hostBeat: now(), seed: g.seed,
+      players: g.players.map(function (p) {
+        return { id: p.id, name: p.name, isBot: !!p.isBot, score: p.score,
+                 left: !!p.left, moleCount: p.moleCount || 0 };
+      }),
+      usedLocations: g.usedLocations, secret: g.secret, clues: g.clues,
+      votes: g.votes, moleGuess: g.moleGuess, result: g.result,
+      deadline: g.deadline || 0, createdAt: g.createdAt
+    };
+  }
+  function unpack(d) {
+    var g = E.createGame(d.code, d.hostId, window.DECK, { totalRounds: d.totalRounds, seed: d.seed });
+    ['phase', 'round', 'totalRounds', 'hostId', 'hostBeat', 'seed', 'players', 'usedLocations',
+     'secret', 'clues', 'votes', 'moleGuess', 'result', 'deadline', 'createdAt'].forEach(function (k) {
+      if (d[k] !== undefined) g[k] = d[k];
+    });
+    g.clues = g.clues || {}; g.votes = g.votes || {}; g.players = g.players || [];
+    return g;
+  }
+
+  function commit(force) {
+    if (!isHost || !gameRef || !game) return;
+    dirty = true;
+    if (writing) return;
+    var since = now() - lastWrite;
+    if (!force && since < 350) { setTimeout(function () { commit(true); }, 350 - since); return; }
+    writing = true; dirty = false; lastWrite = now();
+    gameRef.set(pack(game))
+      .catch(function () { /* a lost write is re-sent by the next change */ })
+      .then(function () { writing = false; if (dirty) commit(true); });
+  }
+
+  /* ---------- host duties ---------- */
+  function hostOnline() {
+    if (!game) return false;
+    if (game.hostId === myId) return true;
+    var p = peers[game.hostId];
+    if (p && now() - p < HOST_GRACE) return true;
+    if (!room && game.hostBeat && now() - game.hostBeat < KEEPALIVE * 2) return true;
+    return false;
+  }
+
+  function maybeTakeOver() {
+    if (!game || isHost || hostOnline() || !gameRef) return;
+    // Only the lowest-id present human tries, so eight tabs don't all grab at once.
+    var contenders = Object.keys(peers)
+      .filter(function (id) { return now() - peers[id] < HOST_GRACE; });
+    if (contenders.indexOf(myId) === -1) contenders.push(myId);
+    contenders.sort();
+    if (contenders[0] !== myId) return;
+
+    gameRef.acquire({ holder: myId, ttlMs: 8000 }).then(function (res) {
+      if (!res || !res.acquired || !game) return;
+      isHost = true;
+      game.hostId = myId;
+      startLoop();
+      commit(true);
+    }).catch(function () {});
+  }
+
+  function armPhase() {
+    var limits = { clue1: 75000, clue2: 75000, vote: 60000, lastword: 30000, reveal: 25000 };
+    game.deadline = limits[game.phase] ? now() + limits[game.phase] : 0;
+  }
+
+  function step() { E.advance(game); armPhase(); commit(true); }
+
+  function hostTick() {
+    if (!isHost || !game) { return; }
+    var g = game, changed = false;
+
+    /* bots act a beat after the phase opens */
+    if (g.phase === 'clue1' || g.phase === 'clue2') {
+      E.activePlayers(g).filter(function (p) { return p.isBot; }).forEach(function (b) {
+        if (!(g.clues[b.id] && g.clues[b.id][E.clueIndex(g)])) {
+          if (now() > (g.deadline - 71000)) { E.submitClue(g, b.id, E.botClue(g, b.id)); changed = true; }
+        }
+      });
+    } else if (g.phase === 'vote') {
+      E.activePlayers(g).filter(function (p) { return p.isBot; }).forEach(function (b) {
+        if (!g.votes[b.id] && now() > (g.deadline - 56000)) {
+          E.submitVote(g, b.id, E.botVote(g, b.id)); changed = true;
+        }
+      });
+    } else if (g.phase === 'lastword') {
+      var mole = E.findPlayer(g, g.secret.moleId);
+      if (mole && mole.isBot && !g.moleGuess && now() > (g.deadline - 26000)) {
+        E.submitMoleGuess(g, g.secret.options[Math.floor(Math.random() * g.secret.options.length)]);
+        changed = true;
+      }
+    }
+
+    /* everyone has acted — move on without waiting for the clock */
+    if ((g.phase === 'clue1' || g.phase === 'clue2') && E.allCluesIn(g)) { step(); return; }
+    if (g.phase === 'vote' && E.allVotesIn(g)) { step(); return; }
+    if (g.phase === 'lastword' && g.moleGuess) { step(); return; }
+
+    /* the clock ran out */
+    if (g.deadline && now() > g.deadline) {
+      if (g.phase === 'clue1' || g.phase === 'clue2') {
+        E.activePlayers(g).forEach(function (p) {
+          if (!(g.clues[p.id] && g.clues[p.id][E.clueIndex(g)])) E.submitClue(g, p.id, E.botClue(g, p.id));
+        });
+      }
+      step(); return;
+    }
+
+    if (changed) { commit(); return; }
+    if (now() - lastWrite > KEEPALIVE && g.phase !== 'lobby' && g.phase !== 'gameover') commit(true);
+  }
+
+  function startLoop() {
+    clearInterval(loop);
+    loop = setInterval(function () {
+      if (isHost) hostTick(); else maybeTakeOver();
+      sendPresence();
+    }, 1000);
+  }
+
+  /* ---------- actions ---------- */
+  function apply(pid, a) {
+    var g = game;
+    if (!g) return;
+    var host = g.hostId === pid;
+    switch (a.type) {
+      case 'join': {
+        var ex = E.findPlayer(g, pid);
+        if (ex) { ex.left = false; if (a.name) ex.name = String(a.name).slice(0, 18); }
+        else E.addPlayer(g, pid, a.name, false);
+        break;
+      }
+      case 'leave': E.removePlayer(g, pid); break;
+      case 'rounds':
+        if (host && g.phase === 'lobby') g.totalRounds = Math.max(1, Math.min(10, a.value | 0));
+        break;
+      case 'addBot': {
+        if (!host || g.phase !== 'lobby') break;
+        var names = ['Robin', 'Ash', 'Wren', 'Nico', 'Sol', 'Rex', 'Indy'];
+        var taken = g.players.map(function (p) { return p.name; });
+        var nm = names.filter(function (n) { return taken.indexOf(n) === -1; })[0] || ('Bot' + g.players.length);
+        E.addPlayer(g, 'bot_' + nm.toLowerCase(), nm, true);
+        break;
+      }
+      case 'removeBot': {
+        if (!host || g.phase !== 'lobby') break;
+        var bots = g.players.filter(function (p) { return p.isBot; });
+        if (bots.length) E.removePlayer(g, bots[bots.length - 1].id);
+        break;
+      }
+      case 'start':
+        if (host && g.phase === 'lobby' && E.startRound(g).ok) armPhase();
+        break;
+      case 'clue': E.submitClue(g, pid, a.word); break;
+      case 'vote': E.submitVote(g, pid, a.target); break;
+      case 'guess': if (g.secret && g.secret.moleId === pid) E.submitMoleGuess(g, a.location); break;
+      case 'next': if (host && g.phase === 'reveal') { E.advance(g); armPhase(); } break;
+      case 'again':
+        if (!host || g.phase !== 'gameover') break;
+        g.players.forEach(function (p) { p.score = 0; p.moleCount = 0; });
+        g.players = g.players.filter(function (p) { return !p.left; });
+        g.round = 0; g.phase = 'lobby'; g.secret = null; g.result = null;
+        g.usedLocations = []; g.seed = now() & 0x7fffffff; g.deadline = 0;
+        break;
+    }
+    commit();
+  }
+
+  function pushAction(a) {
+    if (!actionsRef) return;
+    actionN++;
+    a.n = actionN; a.at = now(); a.name = a.name || myName;
+    if (isHost) { seenN[myId] = actionN; apply(myId, a); }
+    actionsRef.doc(myId).set(a).catch(function () {
+      fail('That did not reach the table — check your connection and try again.');
+    });
+  }
+
+  /* ---------- presence ---------- */
+  function sendPresence() {
+    peers[myId] = now();
+    if (room) { try { room.presence({ pid: myId, at: now() }); } catch (_) {} }
+  }
+  function onlineNow(pid) {
+    if (pid === myId) return true;
+    if (!room) return true;                       // no presence channel: assume present
+    return !!peers[pid] && now() - peers[pid] < HOST_GRACE;
+  }
+
+  /* ---------- rendering out ---------- */
+  function publishState() {
+    if (!game || !code) return;
+    emit(V.buildView(game, myId, { online: onlineNow, deadline: game.deadline || 0 }));
+  }
+
+  /* ---------- wiring a room ---------- */
+  function attach(c, asHost) {
+    code = c;
+    gameRef = db.doc('rooms/' + code);
+    actionsRef = db.collection('rooms/' + code + '/actions');
+    isHost = !!asHost;
+
+    if (unsubGame) unsubGame();
+    unsubGame = gameRef.onSnapshot(function (snap) {
+      if (!snap.exists) return;
+      var d = snap.data();
+      if (isHost && d.hostId !== myId) isHost = false;   // somebody else took the table
+      if (!isHost || !game) game = unpack(d);
+      publishState();
+    }, function () {
+      fail('Lost the connection to this game. Reload the page to rejoin.');
+    });
+
+    if (unsubActions) unsubActions();
+    unsubActions = actionsRef.onSnapshot(function (snap) {
+      if (!isHost) return;
+      snap.docs.forEach(function (doc) {
+        var a = doc.data();
+        if (!a || typeof a.n !== 'number') return;
+        if ((seenN[doc.id] || 0) >= a.n) return;
+        seenN[doc.id] = a.n;
+        apply(doc.id, a);
+      });
+    }, function () {});
+
+    startLoop();
+    sendPresence();
+    emit({ t: 'joined', code: code, pid: myId });
+  }
+
+  /* ---------- boot ---------- */
+  function boot() {
+    if (booted) return Promise.resolve();
+    booted = true;
+    var C = window.claude;
+    if (!C || !C.use) { fail('This game needs to run on its published page.'); return Promise.resolve(); }
+
+    return Promise.all([
+      C.use('db').catch(function () { return null; }),
+      C.use('user').catch(function () { return null; }),
+      C.use('room').catch(function () { return null; })
+    ]).then(function (r) {
+      db = r[0]; user = r[1]; room = r[2];
+      if (!db) { fail('Shared play is not available in this view. Open the published page while signed in.'); return; }
+
+      if (room) {
+        try {
+          room.onPeers(function (list) {
+            (list || []).forEach(function (p) {
+              var st = p && (p.state || p.presence || p);
+              if (st && st.pid) peers[st.pid] = now();
+            });
+          });
+        } catch (_) { room = null; }
+      }
+
+      if (user && user.id) {
+        return user.id().then(function (id) {
+          myId = id || localId();
+          return user.me ? user.me().catch(function () { return null; }) : null;
+        }).then(function (me) {
+          if (me && me.name) myName = me.name;
+        }).catch(function () { myId = localId(); });
+      }
+      myId = localId();
+    }).then(function () {
+      if (!myId) myId = localId();
+    });
+  }
+
+  var CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  function newCode() {
+    var c = '';
+    for (var i = 0; i < 4; i++) c += CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)];
+    return c;
+  }
+
+  return {
+    suggestedName: function () { return myName === 'Player' ? '' : myName; },
+
+    start: function () { boot(); },
+
+    create: function (name) {
+      boot().then(function () {
+        if (!db) return;
+        myName = name || myName;
+        var c = newCode();
+        game = E.createGame(c, myId, window.DECK, { totalRounds: 5 });
+        E.addPlayer(game, myId, myName, false);
+        game.deadline = 0;
+        attach(c, true);
+        commit(true);
+      });
+    },
+
+    join: function (c, name) {
+      boot().then(function () {
+        if (!db) return;
+        myName = name || myName;
+        db.doc('rooms/' + c).get().then(function (snap) {
+          if (!snap.exists) { fail('No game with that code. Check the four characters.'); return; }
+          game = unpack(snap.data());
+          attach(c, game.hostId === myId);
+          pushAction({ type: 'join', name: myName });
+        }).catch(function () {
+          fail('Could not reach that game. Try again in a moment.');
+        });
+      });
+    },
+
+    send: function (m) {
+      if (!game) return;
+      /* Validate locally first: the answer is instant and the table stays clean. */
+      if (m.t === 'clue') {
+        var amMole = game.secret && game.secret.moleId === myId;
+        var loc = amMole ? null : E.locById(game, game.secret.locationId);
+        var v = E.checkClue(m.word, loc, E.usedWordsThisRound(game));
+        if (!v.ok) { fail(v.error); return; }
+        pushAction({ type: 'clue', word: v.word });
+        return;
+      }
+      if (m.t === 'vote') {
+        if (m.target === myId) { fail("You can't vote for yourself."); return; }
+        pushAction({ type: 'vote', target: m.target });
+        return;
+      }
+      if (m.t === 'guess') { pushAction({ type: 'guess', location: m.location }); return; }
+      pushAction({ type: m.t, value: m.value });
+    },
+
+    on: function (h) { handlers.push(h); },
+
+    /* Leave the table cleanly — stops this tab claiming to be the host. */
+    stop: function () {
+      clearInterval(loop); loop = null;
+      isHost = false;
+      if (unsubGame) { unsubGame(); unsubGame = null; }
+      if (unsubActions) { unsubActions(); unsubActions = null; }
+    }
+  };
+})();
+
+window.Net.notice = "Everyone at the table opens this same page and enters the code. They need to be signed in to Claude in your organisation.";
+</script>
+<script>/* COVER STORY — interface.
+   Renders whatever view the transport hands it. The transport (websocket in
+   the hosted build, the artifact data store in the quick-play build) is the
+   only thing that differs between the two versions of this game. */
+(function () {
+  'use strict';
+
+  var app = document.getElementById('app');
+  var state = null;          // the latest view from the server
+  var screen = 'home';       // 'home' | 'game'
+  var pending = { clue: '', name: '', code: '' };
+  var errorMsg = '';
+  var toastTimer = null;
+  var tick = null;
+
+  /* ---------- small helpers ---------- */
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'class') n.className = attrs[k];
+      else if (k === 'text') n.textContent = attrs[k];
+      else if (k === 'html') n.innerHTML = attrs[k];
+      else if (k.slice(0, 2) === 'on') n.addEventListener(k.slice(2), attrs[k]);
+      else if (attrs[k] === true) n.setAttribute(k, '');
+      else if (attrs[k] !== false && attrs[k] != null) n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  function frag(kids) {
+    var f = document.createDocumentFragment();
+    kids.forEach(function (c) { if (c) f.appendChild(c); });
+    return f;
+  }
+  function store(key, val) {
+    try {
+      if (val === undefined) return localStorage.getItem(key);
+      localStorage.setItem(key, val);
+    } catch (_) { return null; }
+  }
+  function toast(msg) {
+    var old = document.querySelector('.toast');
+    if (old) old.remove();
+    var t = el('div', { class: 'toast', text: msg, role: 'status' });
+    document.body.appendChild(t);
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.remove(); }, 3200);
+  }
+
+  /* ---------- masthead + rules ---------- */
+  function masthead() {
+    return el('header', { class: 'masthead' }, [
+      el('div', {}, [
+        el('h1', { class: 'display title', text: 'Cover Story' }),
+        el('span', { class: 'label sub', text: 'One of you was never there' })
+      ]),
+      el('button', { class: 'ghost small', type: 'button', onclick: openRules }, [
+        document.createTextNode('Rules')
+      ])
+    ]);
+  }
+
+  function openRules() {
+    var d = document.getElementById('rulesDialog');
+    if (d) { d.showModal(); return; }
+    d = el('dialog', { class: 'rules', id: 'rulesDialog' }, [
+      el('div', { class: 'body' }, [
+        el('h2', { class: 'display', text: 'How to play' }),
+        el('p', { class: 'label', text: '3 to 8 players · about 10 minutes' }),
+        el('ol', {}, [
+          el('li', { html: '<b>Everyone gets the same place</b> — an airport terminal, a dive bar, a glacier. Everyone except one player, <b>the mole</b>, who is told only the category.' }),
+          el('li', { html: '<b>Give one word, twice.</b> Two rounds of clues. Your word should prove you know the place — without being so obvious that the mole can copy it.' }),
+          el('li', { html: '<b>The mole bluffs.</b> They have to invent a word that fits a place they have never seen, then watch what everyone else says and blend in.' }),
+          el('li', { html: '<b>Vote.</b> Everyone accuses one player. The mole is caught only on a clear majority — a tie lets them walk.' }),
+          el('li', { html: '<b>Last word.</b> A caught mole gets one shot at naming the place from six options. Guess right and they still take points home.' })
+        ]),
+        el('div', { class: 'scoring' }, [
+          el('p', { class: 'label', text: 'Scoring' }),
+          scoreLine('Mole escapes the vote', '+4 to the mole'),
+          scoreLine('Mole is caught', '+2 to every other player'),
+          scoreLine('You voted for the real mole', '+1 to you'),
+          scoreLine('Caught mole names the place', '+3 to the mole'),
+          el('p', { class: 'hint', text: 'Highest total after the last round wins.' })
+        ]),
+        el('div', { class: 'row', style: 'margin-top:18px' }, [
+          el('button', { class: 'primary', type: 'button', onclick: function () { d.close(); } }, [document.createTextNode('Got it')])
+        ])
+      ])
+    ]);
+    document.body.appendChild(d);
+    d.showModal();
+  }
+  function scoreLine(what, pts) {
+    return el('div', {}, [el('span', { text: what }), el('b', { text: pts })]);
+  }
+
+  /* ---------- home ---------- */
+  function renderHome() {
+    var savedName = store('cs_name') || (Net.suggestedName ? Net.suggestedName() : '') || '';
+    if (!pending.name) pending.name = savedName;
+
+    var nameInput = el('input', {
+      type: 'text', id: 'nameInput', maxlength: '18', placeholder: 'e.g. Priya',
+      value: pending.name, autocomplete: 'nickname',
+      oninput: function (e) { pending.name = e.target.value; }
+    });
+    var codeInput = el('input', {
+      type: 'text', id: 'codeInput', maxlength: '4', placeholder: 'ABCD',
+      class: 'mono', value: pending.code, autocapitalize: 'characters', autocomplete: 'off',
+      oninput: function (e) { pending.code = e.target.value.toUpperCase(); e.target.value = pending.code; }
+    });
+
+    function needName() {
+      var n = (pending.name || '').trim();
+      if (!n) { errorMsg = 'Enter a name first — the others need to know who is talking.'; render(); return null; }
+      store('cs_name', n);
+      return n;
+    }
+
+    return frag([
+      masthead(),
+      el('section', { class: 'sheet stack' }, [
+        el('div', { class: 'field' }, [
+          el('label', { for: 'nameInput', text: 'Your name' }), nameInput
+        ]),
+        el('button', {
+          class: 'primary wide', type: 'button',
+          onclick: function () { var n = needName(); if (n) Net.create(n); }
+        }, [document.createTextNode('Start a new game')]),
+        el('div', { class: 'row', style: 'gap:8px' }, [
+          el('div', { class: 'field', style: 'flex:1 1 140px' }, [
+            el('label', { for: 'codeInput', text: 'Join with a code' }), codeInput
+          ]),
+          el('button', {
+            class: 'small', type: 'button', style: 'align-self:flex-end',
+            onclick: function () {
+              var n = needName(); if (!n) return;
+              var c = (pending.code || '').trim().toUpperCase();
+              if (c.length !== 4) { errorMsg = 'A game code is four characters.'; render(); return; }
+              Net.join(c, n);
+            }
+          }, [document.createTextNode('Join')])
+        ]),
+        el('p', { class: 'err', text: errorMsg }),
+        Net.notice ? el('p', { class: 'banner', text: Net.notice }) : null
+      ]),
+      el('section', { class: 'sheet' }, [
+        el('p', { class: 'label', text: 'The short version' }),
+        el('p', { style: 'margin:8px 0 0', text: 'Everyone is shown the same place. One player is shown only the category. Two rounds of one-word clues, then a vote. Find the faker, or survive as one.' }),
+        el('div', { class: 'row', style: 'margin-top:14px' }, [
+          el('button', { class: 'ghost small', type: 'button', onclick: openRules }, [document.createTextNode('Full rules and scoring')])
+        ])
+      ]),
+      foot()
+    ]);
+  }
+
+  function foot() {
+    return el('footer', { class: 'foot' }, [
+      el('span', { class: 'label', text: 'Cover Story' }),
+      el('span', { class: 'label', text: '3–8 players' })
+    ]);
+  }
+
+  /* ---------- lobby ---------- */
+  function renderLobby() {
+    var s = state;
+    var canStart = s.players.filter(function (p) { return !p.left; }).length >= s.minPlayers;
+    var shareUrl = location.origin + '/?code=' + s.code;
+
+    return frag([
+      masthead(),
+      el('section', { class: 'sheet stack' }, [
+        el('div', { class: 'code-display' }, [
+          el('div', {}, [
+            el('p', { class: 'label', text: 'Game code' }),
+            el('div', { class: 'code', text: s.code })
+          ]),
+          el('button', {
+            class: 'small', type: 'button',
+            onclick: function () {
+              var ok = false;
+              try {
+                if (navigator.clipboard) { navigator.clipboard.writeText(shareUrl); ok = true; }
+              } catch (_) {}
+              toast(ok ? 'Link copied — send it to your players.' : shareUrl);
+            }
+          }, [document.createTextNode('Copy link')])
+        ]),
+        el('p', { class: 'hint', text: 'Everyone opens this page on their own phone or laptop and enters the code. Nobody should see anyone else’s screen.' }),
+        playerLog(s, false),
+        !canStart ? el('p', { class: 'banner', text: 'Waiting for ' + (s.minPlayers - s.players.filter(function (p) { return !p.left; }).length) + ' more. Short on people? The host can add a bot.' }) : null,
+        s.youAreHost ? hostControls(s, canStart) : el('p', { class: 'hint', text: 'Waiting for the host to start.' })
+      ]),
+      foot()
+    ]);
+  }
+
+  function hostControls(s, canStart) {
+    var botCount = s.players.filter(function (p) { return p.isBot; }).length;
+    function stepper(label, value, dec, inc, decOff) {
+      return el('div', { class: 'setting' }, [
+        el('span', { class: 'label', text: label }),
+        el('div', { class: 'stepper' }, [
+          el('button', { class: 'small', type: 'button', disabled: decOff, 'aria-label': 'Fewer ' + label, onclick: dec }, [document.createTextNode('\u2212')]),
+          el('span', { class: 'mono', text: String(value) }),
+          el('button', { class: 'small', type: 'button', 'aria-label': 'More ' + label, onclick: inc }, [document.createTextNode('+')])
+        ])
+      ]);
+    }
+    return el('div', { class: 'stack' }, [
+      el('div', { class: 'settings' }, [
+        stepper('Rounds', s.totalRounds,
+          function () { Net.send({ t: 'rounds', value: s.totalRounds - 1 }); },
+          function () { Net.send({ t: 'rounds', value: s.totalRounds + 1 }); },
+          s.totalRounds <= 1),
+        stepper('Bots', botCount,
+          function () { Net.send({ t: 'removeBot' }); },
+          function () { Net.send({ t: 'addBot' }); },
+          botCount === 0)
+      ]),
+      el('p', { class: 'hint', text: 'Bots fill empty seats. They give real clues, bluff when they draw the mole, and vote on what they see.' }),
+      el('button', {
+        class: 'primary wide', type: 'button', disabled: !canStart,
+        onclick: function () { Net.send({ t: 'start' }); }
+      }, [document.createTextNode(canStart ? 'Start the game' : 'Need ' + s.minPlayers + ' players')])
+    ]);
+  }
+
+  /* ---------- the statement log ---------- */
+  function playerLog(s, inGame) {
+    var voting = s.phase === 'vote';
+    var revealed = s.phase === 'reveal' || s.phase === 'gameover';
+    var result = s.result;
+
+    var rows = s.players.filter(function (p) { return !p.left || inGame; }).map(function (p) {
+      var isYou = s.you && p.id === s.you.id;
+      var votable = voting && !isYou && !p.left;
+
+      var tags = [];
+      if (isYou) tags.push(el('span', { class: 'tag you', text: 'you' }));
+      if (p.id === s.hostId) tags.push(el('span', { class: 'tag host', text: 'host' }));
+      if (p.isBot) tags.push(el('span', { class: 'tag bot', text: 'bot' }));
+      if (!p.online && !p.isBot) tags.push(el('span', { class: 'tag off', text: 'away' }));
+
+      var rightKids;
+      if (!inGame) {
+        rightKids = [];
+      } else if (revealed && result) {
+        var d = (result.deltas && result.deltas[p.id]) || 0;
+        rightKids = [
+          el('span', { class: 'delta' + (d ? '' : ' zero'), text: (d > 0 ? '+' + d : '\u00b7') }),
+          el('span', { class: 'score', text: String(p.score) })
+        ];
+      } else {
+        rightKids = [el('span', { class: 'score', text: String(p.score) })];
+      }
+      var right = el('span', { class: 'right' }, rightKids);
+
+      /* Who has acted belongs next to the name; the words row stays words. */
+      if (revealed && result && p.id === result.moleId) {
+        tags.push(el('span', { class: 'stamp-mark', text: 'MOLE' }));
+      }
+      if (inGame) {
+        if (voting) tags.push(el('span', { class: 'tag' + (p.voted ? ' host' : ''), text: p.voted ? 'voted' : 'thinking' }));
+        else if ((s.phase === 'clue1' || s.phase === 'clue2') && p.submitted) {
+          tags.push(el('span', { class: 'tag', style: 'border-color:var(--good);color:var(--good)', text: 'ready' }));
+        }
+      }
+
+      var words = el('span', { class: 'words' }, []);
+      if (inGame) {
+        [0, 1].forEach(function (i) {
+          var w = p.clues[i];
+          if (w) words.appendChild(el('span', { class: 'word', text: w }));
+          else if (s.phase === 'clue' + (i + 1)) {
+            words.appendChild(el('span', {
+              class: 'word ' + (p.submitted ? 'ready' : 'blank'),
+              text: p.submitted ? 'locked in' : '\u00b7 \u00b7 \u00b7'
+            }));
+          } else if ((s.phase === 'vote' || revealed) && !w) {
+            words.appendChild(el('span', { class: 'word blank', text: '—' }));
+          }
+        });
+        if (revealed && result && result.counts) {
+          var n = result.counts[p.id] || 0;
+          if (n > 0) words.appendChild(el('span', { class: 'tag off', text: n + (n === 1 ? ' vote' : ' votes') }));
+        }
+      }
+
+      var attrs = {
+        class: 'entry' + (votable ? ' votable' : '') +
+               (voting && s.myVote === p.id ? ' picked' : '') +
+               (voting && isYou ? ' self-row' : '')
+      };
+      if (votable) {
+        attrs.role = 'button';
+        attrs.tabindex = '0';
+        attrs['aria-label'] = 'Accuse ' + p.name;
+        attrs.onclick = function () { Net.send({ t: 'vote', target: p.id }); };
+        attrs.onkeydown = function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); Net.send({ t: 'vote', target: p.id }); }
+        };
+      }
+
+      var row = el('div', attrs, [
+        el('span', { class: 'who' }, [el('span', { class: 'name', text: p.name })].concat(tags)),
+        right,
+        words
+      ]);
+
+      return row;
+    });
+
+    return el('div', {}, [
+      el('div', { class: 'sheet-head' }, [
+        el('p', { class: 'label', text: inGame ? 'Statements' : 'Players (' + s.players.length + '/' + s.maxPlayers + ')' }),
+        inGame ? el('p', { class: 'label', text: 'Score' }) : null
+      ]),
+      el('div', { class: 'log' }, rows)
+    ]);
+  }
+
+  /* ---------- the brief ---------- */
+  function brief(s) {
+    if (!s.you) return null;
+    var revealed = s.phase === 'reveal' || s.phase === 'gameover';
+    if (s.you.isMole && !revealed) {
+      return el('div', { class: 'brief is-mole' }, [
+        el('p', { class: 'label', text: 'Your brief' }),
+        el('div', { class: 'display role', text: 'You are the mole' }),
+        el('div', { class: 'place', text: 'Category: ' + s.category }),
+        el('p', { class: 'note', text: 'You do not know the place. Read the other clues, give a word that could belong, and do not be the odd one out.' })
+      ]);
+    }
+    return el('div', { class: 'brief' }, [
+      el('p', { class: 'label', text: 'Your brief' }),
+      el('div', { class: 'display role', text: s.you.isMole ? 'You were the mole' : 'You were there' }),
+      el('div', { class: 'place', text: s.location || '—' }),
+      el('p', { class: 'note', text: s.you.isMole ? 'Everyone can see it now.' : 'Prove you know it — without handing it to the mole.' })
+    ]);
+  }
+
+  /* ---------- phase panels ---------- */
+  function cluePanel(s) {
+    var n = s.phase === 'clue1' ? 'first' : 'second';
+    if (s.myClue) {
+      return el('div', { class: 'stack' }, [
+        el('p', { class: 'label', text: 'Your ' + n + ' word' }),
+        el('div', { class: 'row' }, [
+          el('span', { class: 'word', style: 'font-size:18px;padding:8px 14px', text: s.myClue }),
+          el('span', { class: 'hint', text: 'Locked in. Waiting for the others.' })
+        ])
+      ]);
+    }
+    var input = el('input', {
+      type: 'text', id: 'clueInput', maxlength: String(s.clueMax),
+      placeholder: 'one word', class: 'mono', value: pending.clue,
+      autocomplete: 'off', autocorrect: 'off', spellcheck: 'false',
+      oninput: function (e) { pending.clue = e.target.value; },
+      onkeydown: function (e) { if (e.key === 'Enter') submitClue(); }
+    });
+    function submitClue() {
+      var w = (pending.clue || '').trim();
+      if (!w) { errorMsg = 'Type one word.'; render(); return; }
+      Net.send({ t: 'clue', word: w });
+    }
+    return el('div', { class: 'stack' }, [
+      el('div', { class: 'field' }, [
+        el('label', { for: 'clueInput', text: 'Your ' + n + ' word — one word, and not the name of the place' }),
+        input
+      ]),
+      el('button', { class: 'primary wide', type: 'button', onclick: submitClue }, [document.createTextNode('Submit word')]),
+      el('p', { class: 'err', text: errorMsg })
+    ]);
+  }
+
+  function votePanel(s) {
+    if (s.myVote) {
+      var who = s.players.filter(function (p) { return p.id === s.myVote; })[0];
+      return el('div', { class: 'stack' }, [
+        el('p', { class: 'banner', text: 'You accused ' + (who ? who.name : '?') + '. Tap another name to change your mind while the others decide.' })
+      ]);
+    }
+    return el('p', { class: 'banner', text: 'Tap the player you think is the mole.' });
+  }
+
+  function lastWordPanel(s) {
+    if (!s.options) {
+      return el('p', { class: 'banner warn', text: 'The mole was caught. They get one guess at the place.' });
+    }
+    return el('div', { class: 'stack' }, [
+      el('p', { class: 'banner warn', text: 'They got you. Name the place and you still walk away with points.' }),
+      el('div', { class: 'options' }, s.options.map(function (o) {
+        return el('button', { type: 'button', onclick: function () { Net.send({ t: 'guess', location: o.id }); } },
+          [document.createTextNode(o.name)]);
+      }))
+    ]);
+  }
+
+  function revealPanel(s) {
+    var r = s.result;
+    if (!r) return null;
+    var youMole = s.you && s.you.id === r.moleId;
+    var headline = r.caught
+      ? (r.guessRight ? 'Caught — but they named the place' : 'The mole was caught')
+      : 'The mole walked free';
+    var detail;
+    if (r.caught && r.guessRight) {
+      detail = r.moleName + ' was the mole, and guessed ' + r.locationName + ' correctly. Everyone else takes +2, the mole takes +3.';
+    } else if (r.caught) {
+      detail = r.moleName + ' was the mole' + (r.moleGuessName ? ' and guessed ' + r.moleGuessName : ' and ran out of guesses') + '. Everyone else takes +2.';
+    } else {
+      detail = r.moleName + ' was the mole and nobody pinned it down. +4 to the mole.';
+    }
+
+    return el('div', { class: 'stack' }, [
+      el('div', { class: 'verdict ' + (r.caught ? 'caught' : 'escaped') }, [
+        el('h3', { class: 'display', text: headline }),
+        el('p', { text: detail }),
+        el('p', { text: 'The place was ' + r.locationName + '.' })
+      ]),
+      s.youAreHost
+        ? el('button', {
+            class: 'primary wide', type: 'button',
+            onclick: function () { Net.send({ t: 'next' }); }
+          }, [document.createTextNode(s.round >= s.totalRounds ? 'See the final scores' : 'Next round')])
+        : el('p', { class: 'hint', text: 'Waiting for the host to deal the next round.' }),
+      youMole && !r.caught ? el('p', { class: 'hint', text: 'Nobody suspected you. Try not to look pleased.' }) : null
+    ]);
+  }
+
+  function gameOverPanel(s) {
+    var top = s.standings && s.standings[0];
+    var winners = s.standings ? s.standings.filter(function (p) { return p.score === top.score; }) : [];
+    return el('section', { class: 'sheet stack' }, [
+      el('p', { class: 'label', text: 'Final' }),
+      el('h2', { class: 'display', style: 'font-size:clamp(26px,7vw,38px)',
+        text: winners.length > 1
+          ? 'A tie: ' + winners.map(function (w) { return w.name; }).join(' and ')
+          : (top ? top.name + ' wins' : 'Game over') }),
+      el('div', { class: 'log' }, (s.standings || []).map(function (p, i) {
+        return el('div', { class: 'entry' }, [
+          el('span', { class: 'who' }, [
+            el('span', { class: 'mono', style: 'color:var(--ink-3);min-width:2.5ch', text: String(i + 1) }),
+            el('span', { class: 'name', text: p.name })
+          ]),
+          el('span', { class: 'score', text: String(p.score) })
+        ]);
+      })),
+      s.youAreHost
+        ? el('button', { class: 'primary wide', type: 'button', onclick: function () { Net.send({ t: 'again' }); } },
+            [document.createTextNode('Play again')])
+        : el('p', { class: 'hint', text: 'The host can start another game.' })
+    ]);
+  }
+
+  /* ---------- status bar ---------- */
+  function statusbar(s) {
+    var names = {
+      clue1: 'First word', clue2: 'Second word', vote: 'Vote',
+      lastword: 'Last word', reveal: 'Result', gameover: 'Final scores'
+    };
+    var bar = el('div', { class: 'statusbar' }, [
+      el('span', { class: 'label', text: 'Round ' + s.round + ' of ' + s.totalRounds }),
+      el('span', { class: 'display', style: 'font-size:15px', text: names[s.phase] || s.phase }),
+      el('span', { class: 'clock mono', id: 'clock', text: '' })
+    ]);
+    return el('div', {}, [bar, el('div', { class: 'meter' }, [el('i', { id: 'meterFill', style: 'width:100%' })])]);
+  }
+
+  function runClock() {
+    clearInterval(tick);
+    if (!state || !state.deadline) {
+      var c0 = document.getElementById('clock'); if (c0) c0.textContent = '';
+      var m0 = document.getElementById('meterFill'); if (m0) m0.style.width = '0%';
+      return;
+    }
+    var total = state.deadline - (state.receivedAt || Date.now());
+    function paint() {
+      var c = document.getElementById('clock');
+      var m = document.getElementById('meterFill');
+      if (!c) { clearInterval(tick); return; }
+      var left = Math.max(0, state.deadline - (Date.now() + (state.skew || 0)));
+      c.textContent = Math.ceil(left / 1000) + 's';
+      c.className = 'clock mono' + (left < 11000 ? ' low' : '');
+      if (m) m.style.width = Math.max(0, Math.min(100, (left / Math.max(total, 1)) * 100)) + '%';
+    }
+    paint();
+    tick = setInterval(paint, 1000);
+  }
+
+  /* ---------- game screen ---------- */
+  function renderGame() {
+    var s = state;
+    var panel = null;
+    if (s.phase === 'clue1' || s.phase === 'clue2') panel = cluePanel(s);
+    else if (s.phase === 'vote') panel = votePanel(s);
+    else if (s.phase === 'lastword') panel = lastWordPanel(s);
+    else if (s.phase === 'reveal') panel = revealPanel(s);
+
+    return frag([
+      masthead(),
+      statusbar(s),
+      brief(s),
+      panel ? el('section', { class: 'sheet' }, [panel]) : null,
+      el('section', { class: 'sheet' }, [playerLog(s, true)]),
+      foot()
+    ]);
+  }
+
+  /* ---------- render ---------- */
+  function render() {
+    var focusId = document.activeElement && document.activeElement.id;
+    var selStart = null;
+    if (focusId && document.activeElement.setSelectionRange) {
+      try { selStart = document.activeElement.selectionStart; } catch (_) {}
+    }
+
+    app.textContent = '';
+    if (screen === 'home' || !state) app.appendChild(renderHome());
+    else if (state.phase === 'lobby') app.appendChild(renderLobby());
+    else if (state.phase === 'gameover') app.appendChild(frag([masthead(), gameOverPanel(state), foot()]));
+    else app.appendChild(renderGame());
+
+    if (focusId) {
+      var again = document.getElementById(focusId);
+      if (again) {
+        again.focus();
+        if (selStart != null && again.setSelectionRange) {
+          try { again.setSelectionRange(selStart, selStart); } catch (_) {}
+        }
+      }
+    }
+    runClock();
+  }
+
+  /* ---------- transport wiring ---------- */
+  var lastPhase = null;
+  Net.on(function (msg) {
+    if (msg.t === 'joined') {
+      store('cs_pid', msg.pid);
+      store('cs_code', msg.code);
+      screen = 'game';
+      errorMsg = '';
+      try { history.replaceState(null, '', '?code=' + msg.code); } catch (_) {}
+      return;
+    }
+    if (msg.t === 'error') { errorMsg = msg.message; toast(msg.message); render(); return; }
+    if (msg.t === 'state') {
+      msg.receivedAt = Date.now();
+      msg.skew = msg.serverNow ? (Date.now() - msg.serverNow) : 0;
+      if (msg.phase !== lastPhase) { pending.clue = ''; errorMsg = ''; lastPhase = msg.phase; }
+      state = msg;
+      screen = 'game';
+      render();
+      return;
+    }
+    if (msg.t === 'closed') {
+      toast('Connection lost — reconnecting…');
+      return;
+    }
+  });
+
+  /* deep link: /?code=ABCD prefills the join box */
+  var qs = new URLSearchParams(location.search);
+  if (qs.get('code')) pending.code = qs.get('code').toUpperCase().slice(0, 4);
+
+  if (Net.stop) window.addEventListener('pagehide', function () { Net.stop(); });
+  Net.start({ pid: store('cs_pid') });
+  render();
+})();
+</script>

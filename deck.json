@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "categories": {
+    "Travel": ["ticket", "queue", "luggage", "map", "delay", "stranger", "window", "seat"],
+    "Everyday": ["door", "line", "receipt", "counter", "chair", "sign", "clock", "shelf"],
+    "Work": ["meeting", "badge", "deadline", "coffee", "screen", "email", "chair", "manager"],
+    "Wild": ["silence", "weather", "dirt", "boots", "distance", "cold", "sky", "insects"],
+    "Nightlife": ["loud", "lights", "crowd", "queue", "late", "drinks", "bass", "stamp"],
+    "Odd Places": ["strange", "quiet", "smell", "locked", "dust", "corridor", "rules", "sign"]
+  },
+  "locations": [
+    { "id": "airport",      "name": "Airport terminal",      "cat": "Travel",     "assoc": ["boarding","gate","passport","suitcase","security","announcement","runway","duty-free","layover","tarmac","carousel","liquids"] },
+    { "id": "cruise",       "name": "Cruise ship",           "cat": "Travel",     "assoc": ["deck","buffet","cabin","seasick","port","lifeboat","ocean","captain","horn","pool","muster","waves"] },
+    { "id": "sleepertrain", "name": "Overnight train",       "cat": "Travel",     "assoc": ["bunk","rattle","corridor","conductor","tunnel","blanket","pantry","sleeper","tracks","dawn","berth","tea"] },
+    { "id": "hostel",       "name": "Backpacker hostel",     "cat": "Travel",     "assoc": ["bunk","lockers","shared","cheap","kitchen","earplugs","backpack","common","towel","checkout","stamps","noise"] },
+    { "id": "roadmotel",    "name": "Highway motel",         "cat": "Travel",     "assoc": ["neon","vacancy","keycard","ice","parking","truck","vending","curtains","checkout","flicker","bible","carpet"] },
+    { "id": "borderpost",   "name": "Border crossing",       "cat": "Travel",     "assoc": ["passport","stamp","questions","uniform","barrier","queue","declare","booth","visa","inspection","flag","waiting"] },
+    { "id": "gondola",      "name": "Mountain cable car",    "cat": "Travel",     "assoc": ["cable","swaying","altitude","window","skis","fog","pylon","descent","dangling","cabin","lever","view"] },
+    { "id": "ferry",        "name": "Morning ferry",         "cat": "Travel",     "assoc": ["ramp","gulls","commuters","spray","railing","schedule","bicycle","horn","dock","churn","bench","crossing"] },
+
+    { "id": "laundromat",   "name": "Laundromat",            "cat": "Everyday",   "assoc": ["coins","dryer","spin","detergent","folding","waiting","lint","machines","warm","socks","hum","basket"] },
+    { "id": "supermarket",  "name": "Supermarket",           "cat": "Everyday",   "assoc": ["trolley","aisle","checkout","freezer","barcode","basket","offers","bagging","produce","queue","scanner","trolleys"] },
+    { "id": "dentist",      "name": "Dentist waiting room",  "cat": "Everyday",   "assoc": ["magazines","drill","appointment","chair","fluoride","nervous","reception","gloves","rinse","xray","poster","fish-tank"] },
+    { "id": "dmv",          "name": "Licence office",        "cat": "Everyday",   "assoc": ["number","forms","photo","window","waiting","clipboard","renewal","stamp","paperwork","bureaucracy","queue","booth"] },
+    { "id": "barbershop",   "name": "Barbershop",            "cat": "Everyday",   "assoc": ["clippers","mirror","cape","trim","chair","gossip","sweeping","fade","razor","tip","comb","buzz"] },
+    { "id": "gym",          "name": "Gym at 6am",            "cat": "Everyday",   "assoc": ["weights","treadmill","mirror","sweat","locker","reps","towel","protein","machines","music","bench","chalk"] },
+    { "id": "library",      "name": "Public library",        "cat": "Everyday",   "assoc": ["silence","shelves","stamp","overdue","study","catalogue","whisper","aisles","returns","desk","dust","card"] },
+    { "id": "carwash",      "name": "Automatic car wash",    "cat": "Everyday",   "assoc": ["brushes","foam","conveyor","windows","rinse","token","wax","dark","water","blower","tunnel","strips"] },
+
+    { "id": "openplan",     "name": "Open-plan office",      "cat": "Work",       "assoc": ["standup","monitor","headphones","printer","kitchenette","calendar","desk","slack","ticket","reorg","whiteboard","mug"] },
+    { "id": "datacenter",   "name": "Data centre",           "cat": "Work",       "assoc": ["racks","cold","fans","cabling","badge","noise","blinking","raised-floor","humming","aisle","ups","servers"] },
+    { "id": "kitchen",      "name": "Restaurant kitchen",    "cat": "Work",       "assoc": ["tickets","burners","shouting","pans","plating","heat","chef","prep","knives","service","steam","expo"] },
+    { "id": "warehouse",    "name": "Fulfilment warehouse",  "cat": "Work",       "assoc": ["pallets","forklift","scanner","shelves","conveyor","picking","boxes","tape","aisle","shift","label","dolly"] },
+    { "id": "newsroom",     "name": "Newsroom on deadline",  "cat": "Work",       "assoc": ["deadline","desk","editor","copy","headline","phones","screens","breaking","byline","rewrite","clock","source"] },
+    { "id": "callcenter",   "name": "Call centre",           "cat": "Work",       "assoc": ["headset","script","queue","hold","metrics","cubicle","transfer","supervisor","mute","targets","survey","calls"] },
+    { "id": "buildsite",    "name": "Construction site",     "cat": "Work",       "assoc": ["helmet","scaffold","cement","crane","boots","dust","rebar","hoarding","lunch","drill","permit","mud"] },
+    { "id": "opentheatre",  "name": "Operating theatre",     "cat": "Work",       "assoc": ["gloves","scrub","lamp","monitor","mask","sterile","instruments","team","clamp","beeping","gown","count"] },
+
+    { "id": "desert",       "name": "Desert at noon",        "cat": "Wild",       "assoc": ["heat","dune","shade","water","mirage","sand","scorpion","glare","thirst","horizon","dry","wind"] },
+    { "id": "rainforest",   "name": "Rainforest floor",      "cat": "Wild",       "assoc": ["canopy","humid","leeches","vines","calls","mud","leaves","damp","insects","green","roots","rain"] },
+    { "id": "glacier",      "name": "Glacier",               "cat": "Wild",       "assoc": ["crevasse","rope","ice","blue","crampons","creaking","meltwater","white","cold","sled","wind","snow"] },
+    { "id": "swamp",        "name": "Swamp at dusk",         "cat": "Wild",       "assoc": ["mosquitoes","reeds","boat","mud","croaking","murky","mist","cypress","paddle","gators","damp","dark"] },
+    { "id": "savannah",     "name": "Savannah waterhole",    "cat": "Wild",       "assoc": ["dust","herd","grass","hooves","watching","lion","horizon","dry","tracks","acacia","heat","drink"] },
+    { "id": "caves",        "name": "Cave system",           "cat": "Wild",       "assoc": ["torch","echo","drip","squeeze","bats","dark","rope","stalactite","damp","crawl","narrow","helmet"] },
+    { "id": "cliffs",       "name": "Sea cliffs",            "cat": "Wild",       "assoc": ["gulls","edge","wind","spray","nests","drop","path","rocks","crashing","fence","gusts","height"] },
+    { "id": "tundra",       "name": "Arctic research camp",  "cat": "Wild",       "assoc": ["generator","parka","supplies","radio","dark","isolation","stove","snow","instruments","cabin","freeze","aurora"] },
+
+    { "id": "nightclub",    "name": "Basement nightclub",    "cat": "Nightlife",  "assoc": ["bass","strobe","sweat","cloakroom","bouncer","dancefloor","stamp","queue","smoke","dj","dark","shots"] },
+    { "id": "karaoke",      "name": "Karaoke booth",         "cat": "Nightlife",  "assoc": ["mic","screen","tambourine","offkey","remote","booth","duet","applause","playlist","reverb","cheers","booklet"] },
+    { "id": "divebar",      "name": "Dive bar",              "cat": "Nightlife",  "assoc": ["jukebox","stools","regulars","tab","peanuts","sticky","pool","neon","bartender","cheap","tv","last-call"] },
+    { "id": "casino",       "name": "Casino floor",          "cat": "Nightlife",  "assoc": ["chips","dealer","roulette","carpet","comped","cameras","slots","noclocks","bets","table","tokens","cash"] },
+    { "id": "rooftop",      "name": "Rooftop party",         "cat": "Nightlife",  "assoc": ["skyline","heaters","string-lights","wind","cocktail","list","view","dj","edge","lift","crowd","cold"] },
+    { "id": "gigvenue",     "name": "Small gig venue",       "cat": "Nightlife",  "assoc": ["support-act","merch","earplugs","pit","amps","setlist","stamp","sweat","encore","stage","monitor","crowd"] },
+    { "id": "latediner",    "name": "24-hour diner",         "cat": "Nightlife",  "assoc": ["booth","pancakes","refill","neon","waitress","3am","menu","ketchup","counter","fluorescent","syrup","quiet"] },
+    { "id": "afterparty",   "name": "Someone's afterparty",  "cat": "Nightlife",  "assoc": ["kitchen","speaker","neighbours","dawn","couch","aux","leftovers","shoes","hallway","phone","charger","taxi"] },
+
+    { "id": "escaperoom",   "name": "Escape room",           "cat": "Odd Places", "assoc": ["clue","padlock","timer","hint","props","combination","clock","hidden","door","panic","riddle","team"] },
+    { "id": "waxmuseum",    "name": "Wax museum",            "cat": "Odd Places", "assoc": ["figures","staring","velvet","uncanny","photos","ropes","still","lighting","celebrity","dust","pose","quiet"] },
+    { "id": "bunker",       "name": "Cold-war bunker",       "cat": "Odd Places", "assoc": ["blast-door","rations","concrete","maps","dial","ventilation","sealed","hatch","ladder","damp","radio","sign"] },
+    { "id": "aquarium",     "name": "Aquarium tunnel",       "cat": "Odd Places", "assoc": ["glass","blue","shark","dark","bubbles","tank","walkway","ripple","feeding","reflection","kids","glow"] },
+    { "id": "selfstorage",  "name": "Self-storage unit",     "cat": "Odd Places", "assoc": ["rollershutter","padlock","corridor","boxes","sensor-light","rental","concrete","dust","trolley","code","unit","echo"] },
+    { "id": "greenhouse",   "name": "Botanical greenhouse",  "cat": "Odd Places", "assoc": ["humid","glass","misters","labels","paths","orchid","warm","condensation","tropical","bench","fern","drip"] },
+    { "id": "filmset",      "name": "Film set",              "cat": "Odd Places", "assoc": ["action","boom","marks","trailer","extras","lighting","take","clapper","catering","crew","reset","quiet"] },
+    { "id": "lostfound",    "name": "Lost property office",  "cat": "Odd Places", "assoc": ["shelves","tags","umbrellas","claim","forms","boxes","odd","counter","labels","keys","dusty","register"] }
+  ]
+}
